@@ -1,0 +1,82 @@
+<!--
+review
+-->
+<div class="container mt-5">
+  <form [formGroup]="filtersForm">
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="filters-container">
+          <h3>Количество пересадок</h3>
+          <ul>
+            <li formArrayName="stops"
+                *ngFor="let option of stopsFormArray.controls; let i = index">
+              <div class="form-check">
+                <input class="form-check-input" [formControlName]="i" type="checkbox" id="{{'option'+i}}">
+                <label class="form-check-label" for="{{'option'+i}}">
+                  {{stopsOptions[i].label}}
+                </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="filters-container">
+          <h3>Компания</h3>
+          <ul>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="company" name="company"
+                       id="exampleRadios1"
+                       value="all" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                  Все
+                </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="company" name="company"
+                       id="exampleRadios2"
+                       value="S7 Airlines" checked>
+                <label class="form-check-label" for="exampleRadios2">
+                  S7 Airlines
+                </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="company" name="company"
+                       id="exampleRadios3"
+                       value="XiamenAir" checked>
+                <label class="form-check-label" for="exampleRadios3">
+                  Xiamen Air
+                </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-8">
+        <div class="sort-tabs btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" formControlName="sort">
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" value="cheapest"> Самый Дешевый
+          </label>
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" value="fastest"> Самый Быстрый
+          </label>
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" value="optimal"> Оптимальный
+          </label>
+        </div>
+        <div class="tickets-wrapper">
+          <ng-container *ngFor="let ticket of tickets$|async">
+            <app-ticket [ticket]="ticket"></app-ticket>
+          </ng-container>
+        </div>
+        <button type="button" class="btn w-100 p-3 mb-5 btn-primary font-weight-bolder" (click)="showMore()">ПОКАЗАТЬ ЕЩЕ 5 БИЛЕТОВ!</button>
+      </div>
+
+    </div>
+  </form>
+</div>

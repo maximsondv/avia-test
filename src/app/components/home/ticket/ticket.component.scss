@@ -1,0 +1,50 @@
+.card {
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+  .top-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0 15px 0;
+
+    h1 {
+      font-size: 24px;
+      color: #2196F3;
+      font-weight: 600;
+    }
+
+    img {
+      width: 110px;
+    }
+  }
+}
+
+.segments-container {
+  .segment {
+    display: flex;
+
+    .col-item {
+      width: 30%;
+
+      h5 {
+        font-size: 14px;
+        line-height: 21px;
+
+        &.grey-label {
+          color: #A0B0B9;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 18px;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    & + .segment {
+      margin-top: 10px;
+    }
+  }
+}
+
